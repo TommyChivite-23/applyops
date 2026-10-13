@@ -1,0 +1,51 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: ["3.11", "3.13"]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+          cache: pip
+          cache-dependency-path: pyproject.toml
+      - run: pip install -e ".[sheets,dev]"
+      - name: Lint
+        run: ruff check .
+      - name: Format check
+        run: ruff format --check .
+      - name: Public-repo hygiene audit (secrets, private IPs, personal data)
+        run: python scripts/audit_public_repo.py
+      - name: Tests with coverage
+        run: pytest --cov=applyops --cov-report=term-missing
+
+  claims-gate:
+    # The sample letters prove the guardrail works in both directions.
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.13"
+      - run: pip install -e .
+      - name: Supported letter passes
+        run: applyops claims check examples/sample_candidate/cover_letter_ok.md --ledger examples/sample_candidate/claims.yaml
+      - name: Overclaiming letter is blocked
+        run: |
+          if applyops claims check examples/sample_candidate/cover_letter_overclaim.md --ledger examples/sample_candidate/claims.yaml; then
+            echo "Overclaiming letter passed the gate"; exit 1
+          fi
+      - name: Invented numbers are blocked
+        run: |
+          if applyops claims check examples/sample_candidate/cover_letter_invented_numbers.md --ledger examples/sample_candidate/claims.yaml; then
+            echo "Letter with an invented metric passed the gate"; exit 1
+          fi
