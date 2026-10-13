@@ -1,0 +1,7 @@
+# Fictional candidate for demos and CI. Real candidate data never goes in this repo.
+candidate: Alex Rivera
+claims: claims.yaml
+skills: skills.yaml
+tracker:
+  kind: csv
+  path: out/tracker.csv

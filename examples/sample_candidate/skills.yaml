@@ -1,0 +1,15 @@
+skills:
+  - name: Python
+    aliases: [flask, pytest]
+  - name: REST APIs
+    aliases: [rest, api, apis, integrations]
+  - name: SQL
+    aliases: [sqlite, postgres, postgresql, mysql]
+  - name: Docker
+    aliases: [containers]
+  - name: CI/CD
+    aliases: [github actions, ci]
+  - name: Microsoft 365
+    aliases: [m365, entra, azure ad]
+  - name: Spanish
+    aliases: [bilingual]

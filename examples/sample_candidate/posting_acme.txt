@@ -1,0 +1,19 @@
+Title: Automation Engineer
+Company: Acme Logistics
+Location: Remote (EU)
+Salary: EUR 50,000 - 60,000
+URL: https://example.com/jobs/acme-automation-engineer
+
+About the role
+Acme Logistics is automating its internal operations.
+
+Requirements
+- 3+ years of Python
+- Experience building and consuming REST APIs
+- SQL and data modelling
+- Docker and CI/CD pipelines
+- Experience with Terraform
+- Bilingual English and Spanish
+
+Nice to have
+- Kubernetes

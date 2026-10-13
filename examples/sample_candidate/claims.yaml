@@ -1,0 +1,25 @@
+# What Alex may claim, and the proof for each. Every claim sentence in a letter
+# must match an entry here, have evidence, and fit the entry's status.
+claims:
+  - id: fleet-tool
+    text: Built a fleet device management tool in Python and Flask with tests and CI
+    match: [fleet, "device|devices"]
+    status: done
+    evidence: https://github.com/example-alex/fleet-tool
+
+  - id: helpdesk-automation
+    text: Automated helpdesk ticket triage for a 300-person company
+    match: ["ticket|tickets", "triage|routing"]
+    status: done
+    evidence: https://example.com/alex/portfolio#helpdesk
+
+  - id: rag-assistant
+    text: Building a bilingual retrieval assistant over IT runbooks
+    match: ["assistant", "runbook|runbooks|retrieval"]
+    status: in_progress
+    evidence: https://github.com/example-alex/runbook-assistant
+
+  - id: kubernetes-platform
+    text: Kubernetes platform (not started)
+    match: [kubernetes]
+    status: planned
