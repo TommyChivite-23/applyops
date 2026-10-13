@@ -1,0 +1,11 @@
+__pycache__/
+*.egg-info/
+.venv/
+.coverage
+.pytest_cache/
+.ruff_cache/
+out/
+# Real candidate data never goes in this repo.
+private/
+credentials*.json
+*.xlsx
